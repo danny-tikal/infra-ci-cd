@@ -34,7 +34,7 @@ jobs:
       - name: terraform apply
         id: plan
         run: |
-          terraform apply >> result.temp
+          echo terraform apply >> result.temp
           cat result.temp | tfnotify --config .tfnotify/slack.yml apply --message "$(date)"
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
