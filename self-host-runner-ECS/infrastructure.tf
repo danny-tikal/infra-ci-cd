@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "int_gateway" {
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.private_subnet_cidr
-  availability_zone = "ap-northeast-1c"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "${var.PREFIX}_private_subnet"
@@ -40,7 +40,7 @@ resource "aws_subnet" "private_subnet" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.public_subnet_cidr
-  availability_zone = "ap-northeast-1c"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "${var.PREFIX}_public_subnet"

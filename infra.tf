@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "int_gateway" {
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.private_subnet_cidr[0]
-  availability_zone = "ap-northeast-1c"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "${var.PREFIX}_private_subnet"
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_subnet" {
 resource "aws_subnet" "private_subnet_db1" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.private_subnet_cidr[1]
-  availability_zone = "ap-northeast-1a"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "${var.PREFIX}_private_subnet_db1"
@@ -49,7 +49,7 @@ resource "aws_subnet" "private_subnet_db1" {
 resource "aws_subnet" "private_subnet_db2" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.private_subnet_cidr[2]
-  availability_zone = "ap-northeast-1d"
+  availability_zone = "eu-west-1b"
 
   tags = {
     Name = "${var.PREFIX}_private_subnet_db2"
@@ -60,7 +60,7 @@ resource "aws_subnet" "private_subnet_db2" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.public_subnet_cidr
-  availability_zone = "ap-northeast-1c"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "${var.PREFIX}_public_subnet"
@@ -171,10 +171,10 @@ resource "aws_eip" "server_eip" {
 
 ## Server
 resource "aws_instance" "server" {
-  ami                       = "ami-0f2dd5fc989207c82"
+  ami                       = "ami-0aef57767f5404a3c"
   instance_type             = "t2.micro"
-  availability_zone         = "ap-northeast-1c"
-  key_name                  = "access-key"
+  availability_zone         = "eu-west-1a"
+  # key_name                  = "access-key"
 
   network_interface {
     device_index            = 0
@@ -220,7 +220,7 @@ resource "aws_rds_cluster" "aurora_cluster" {
   cluster_identifier              = "${var.PREFIX}-cluster"
   engine                          = "aurora-mysql"
   engine_version                  = "5.7.mysql_aurora.2.09.1"
-  availability_zones              = ["ap-northeast-1c", "ap-northeast-1a", "ap-northeast-1d"]
+  availability_zones              = ["eu-west-1a", "eu-west-1b"]
   database_name                   = var.DB_NAME
   master_username                 = "root"
   master_password                 = var.DB_PASSWORD

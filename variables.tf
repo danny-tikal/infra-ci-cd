@@ -1,5 +1,5 @@
 variable "PREFIX" {
-    default = "main-infra"
+    default = "tikal-test"
 }
 
 variable "DB_NAME" {

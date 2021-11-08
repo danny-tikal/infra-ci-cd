@@ -103,3 +103,10 @@ name: "{your repo name}"
 In order github actions to run, you need workflow files. I have created workflow files for both CI and CD in ".github" folder. There you can see all of the jobs done in CI-CD pipeline. Just include these files as they are along with above run terraform files and push to your repository.
 
 YOUR PIPELINE IS READY. THAT IS IT!!!!
+
+
+### Notes:
+1. create manually the s3 buckets (set it public)
+2. change the ragion value 
+3. change the avilabilty zone values
+4. ECR base url: $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com
