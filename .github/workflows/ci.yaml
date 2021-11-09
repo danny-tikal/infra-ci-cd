@@ -36,6 +36,10 @@ jobs:
           wget https://releases.hashicorp.com/terraform/0.14.3/terraform_0.14.3_linux_amd64.zip
           unzip terraform_0.14.3_linux_amd64.zip
           mv terraform /usr/local/bin/
+      - name: setup terragrunt
+        run: |
+          snap install terragrunt
+          echo "Finished install"
       - name: terraform fmt
         id: fmt
         run: terraform fmt
