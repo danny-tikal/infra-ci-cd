@@ -105,8 +105,7 @@ jobs:
         run: |
           rm -f *.tf
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner
-          terragrunt run-all init -auto-approve
-
+          terragrunt run-all init
   TerraformPlan:
     #needs: [Lint, Format, Security, TerraformInitValidate]
     needs: [Lint, Format, TerraformInitValidate, TerragruntInit]
