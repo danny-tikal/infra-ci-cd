@@ -228,7 +228,7 @@ resource "aws_ecs_task_definition" "task_definition" {
   [
     {
       "name": "ecs-runner",
-      "image": "747632300909.dkr.ecr.ap-northeast-1.amazonaws.com/ecs-runner:latest",
+      "image": "208155336842.dkr.ecr.eu-west-1.amazonaws.com/ecs-runner",
       "cpu": 256,
       "memory": 512,
       "essential": true,
@@ -241,7 +241,7 @@ resource "aws_ecs_task_definition" "task_definition" {
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-region" : "ap-northeast-1",
+            "awslogs-region" : "eu-west-1",
             "awslogs-group" : "/ecs/${var.PREFIX}-task-def",
             "awslogs-stream-prefix" : "ecs"
         }
