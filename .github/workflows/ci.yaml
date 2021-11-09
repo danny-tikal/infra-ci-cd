@@ -52,9 +52,10 @@ jobs:
       - name: setup tfsec and run
         id: tfsec-setup
         run: |
+          echo "Skip this stage ...."
           wget https://github.com/tfsec/tfsec/releases/download/v0.37.1/tfsec-linux-amd64
           chmod a+x tfsec-linux-amd64
-          ./tfsec-linux-amd64
+          echo ./tfsec-linux-amd64
         continue-on-error: false
 
   TerraformInitValidate:
@@ -79,7 +80,8 @@ jobs:
         continue-on-error: false
 
   TerraformPlan:
-    needs: [Lint, Format, Security, TerraformInitValidate]
+    #needs: [Lint, Format, Security, TerraformInitValidate]
+    needs: [Lint, Format, TerraformInitValidate]
     runs-on: [self-hosted, aws-runner]
     defaults:
       run:
