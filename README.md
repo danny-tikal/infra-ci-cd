@@ -110,4 +110,4 @@ YOUR PIPELINE IS READY. THAT IS IT!!!!
 2. change the ragion value 
 3. change the avilabilty zone values
 4. ECR base url: $AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com
-5. 
+5. null
