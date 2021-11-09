@@ -92,14 +92,24 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: clone repository
+        uses: actions/checkout@v2
+      - name: setup terragrunt
+        run: |
+          wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.34.3/terragrunt_linux_amd64
+          mv terragrunt_linux_amd64 terragrunt
+          chmod +x terragrunt
+          mv terragrunt /usr/local/bin
+          echo "Finished install"
       - name: init terragrunt 
         run: |
+          rm -f *.tf
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner
           terragrunt run-all init
 
   TerraformPlan:
     #needs: [Lint, Format, Security, TerraformInitValidate]
-    needs: [Lint, Format, TerraformInitValidate]
+    needs: [Lint, Format, TerraformInitValidate, TerragruntInit]
     runs-on: [self-hosted, aws-runner]
     defaults:
       run:
