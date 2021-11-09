@@ -9,7 +9,7 @@ locals {
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
-  source = "git@github.com:explorium-ai/terraform.git//eks-template/vpc"
+  source = "../../../../terraform/eks-template/vpc"
 
   after_hook "after_hook" {
     commands     = ["apply", "plan"]

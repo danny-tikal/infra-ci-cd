@@ -96,7 +96,6 @@ jobs:
         uses: actions/checkout@v2
       - name: setup terragrunt
         run: |
-          apt-get install ssh-client
           wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.34.3/terragrunt_linux_amd64
           mv terragrunt_linux_amd64 terragrunt
           chmod +x terragrunt

@@ -1,0 +1,16 @@
+global:
+  env: ${env_profile}
+  paths:
+    - /var/log/containers/lily*.log
+    - /var/log/containers/beat*.log
+    - /var/log/containers/flash*.log
+    - /var/log/containers/kate*.log
+    - /var/log/containers/romee*.log
+    - /var/log/containers/stella*.log
+    - /var/log/containers/stella-workers*.log
+    - /var/log/containers/postgres*.log
+    - /var/log/containers/boserver*.log
+    - /var/log/containers/boweb*.log  
+    - /var/log/containers/data-service*.log  
+  secrets:
+    region: ${region}

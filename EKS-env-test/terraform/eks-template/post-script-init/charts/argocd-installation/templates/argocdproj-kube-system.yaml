@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:clusterResourceWhitelist: {}
+        f:description: {}
+        f:destinations: {}
+        f:namespaceResourceWhitelist: {}
+        f:sourceRepos: {}
+      f:status: {}
+    manager: argocd-server
+    operation: Update
+  name: kube-system
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: kube-system namespace
+  destinations:
+  - namespace: kube-system
+    server: "{{ .Values.api_server }}"
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - "{{ .Values.github_repo_url }}"
