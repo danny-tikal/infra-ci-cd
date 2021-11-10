@@ -32,11 +32,11 @@ jobs:
     steps:
       - name: clone repository
         uses: actions/checkout@v2
-      - name: setup terraform
-        run: |
-          wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
-          unzip terraform_1.0.4_linux_amd64.zip
-          mv terraform /usr/local/bin/
+      #- name: setup terraform
+      #  run: |
+      #    wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
+      #    unzip terraform_1.0.4_linux_amd64.zip
+      #    mv terraform /usr/local/bin/
       - name: setup terragrunt
         run: |
           wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.34.3/terragrunt_linux_amd64
@@ -94,6 +94,7 @@ jobs:
         with:
           terraform_version: 1.0.4
           cli_config_credentials_token: ${{ secrets.github_token }}
+          terraform_wrapper: false
       - name: terraform init
         id: tf-init
         run: terraform init
