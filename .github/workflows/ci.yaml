@@ -91,7 +91,7 @@ jobs:
           mv terraform /usr/local/bin/
           echo >> ~/.terraformrc
           echo 'credentials "github.com" {'               >> ~/.terraformrc
-          echo '  token = "${{ secrets.github_token }}"'  >> ~/.terraformrc
+          echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
           echo '}'                                        >> ~/.terraformrc
           ls -l ~/.terraform*
           cat ~/.terraformrc
