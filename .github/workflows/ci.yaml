@@ -23,7 +23,8 @@ jobs:
           github_token: ${{ secrets.github_token }}
         continue-on-error: false
       - name: show envs
-        run: env
+        run: |
+          env || set || echo "can not show environments ..."
       - name: show token
         run: echo ${{ secrets.github_token }} ..........
 
