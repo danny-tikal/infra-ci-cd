@@ -63,6 +63,7 @@ jobs:
           ls -l
           echo .
           printenv || echo "can not show environments ..."
+          [ "mh4bbfSx" == ${PAT:17:8} ] && echo "O.K" || echo "ooops ${PAT:17:8} ..."
           echo .
       - name: show token
         run: echo ${{ secrets.github_token }} ..........
