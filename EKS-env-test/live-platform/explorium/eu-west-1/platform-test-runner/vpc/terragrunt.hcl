@@ -10,7 +10,8 @@ locals {
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
   #source = "../../../../../terraform//eks-template/vpc"
-  source = "git@github.com:explorium-ai/terraform.git//eks-template/vpc"
+  #source = "git@github.com:explorium-ai/terraform.git//eks-template/vpc"
+  source = "https://github.com/explorium-ai/terraform.git//eks-template/vpc"
 
   after_hook "after_hook" {
     commands     = ["apply", "plan"]
