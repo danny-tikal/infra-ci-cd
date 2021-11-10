@@ -11,7 +11,7 @@ locals {
 terraform {
   #source = "../../../../../terraform//eks-template/vpc"
   #source = "git@github.com:explorium-ai/terraform.git//eks-template/vpc"
-  source = "https://github.com/explorium-ai/terraform.git//eks-template/vpc"
+  source = "github.com/explorium-ai/terraform.git//eks-template/vpc"
 
   after_hook "after_hook" {
     commands     = ["apply", "plan"]
