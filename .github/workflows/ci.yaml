@@ -84,17 +84,19 @@ jobs:
     steps:
       - name: clone repository
         uses: actions/checkout@v2
-      #- name: setup terraform
-      #  run: |
-      #    wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
-      #    unzip terraform_1.0.4_linux_amd64.zip
-      #    mv terraform /usr/local/bin/
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.0.4
-          cli_config_credentials_token: ${{ secrets.github_token }}
-          terraform_wrapper: true
+      - name: setup terraform
+        run: |
+          wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
+          unzip terraform_1.0.4_linux_amd64.zip
+          mv terraform /usr/local/bin/
+          ls -l ~/.terraform*
+          cat ~/.terraformrc
+      #- name: Setup Terraform
+      #  uses: hashicorp/setup-terraform@v1
+      #  with:
+      #    terraform_version: 1.0.4
+      #    cli_config_credentials_token: ${{ secrets.github_token }}
+      #    terraform_wrapper: true
       - name: terraform init
         id: tf-init
         run: terraform init
