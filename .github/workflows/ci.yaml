@@ -124,11 +124,6 @@ jobs:
           chmod +x terragrunt
           mv terragrunt /usr/local/bin
           echo "Finished install"
-      #- name: Setup Terraform
-      #  uses: hashicorp/setup-terraform@v1
-      #  with:
-      #    # terraform_version: 0.13.0
-      #    cli_config_credentials_token: ${{ secrets.github_token }}
       - name: init terragrunt 
         run: |
           rm -f *.tf
