@@ -89,6 +89,7 @@ jobs:
           wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
           unzip terraform_1.0.4_linux_amd64.zip
           mv terraform /usr/local/bin/
+          echo >> ~/.terraformrc
           echo 'credentials "github.com" {'               >> ~/.terraformrc
           echo '  token = "${{ secrets.github_token }}"'  >> ~/.terraformrc
           echo '}'                                        >> ~/.terraformrc
@@ -131,6 +132,7 @@ jobs:
       - name: init terragrunt 
         run: |
           rm -f *.tf
+          cat ~/.terraformrc
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
           terragrunt init
           terragrunt plan
