@@ -94,7 +94,7 @@ jobs:
         with:
           terraform_version: 1.0.4
           cli_config_credentials_token: ${{ secrets.github_token }}
-          terraform_wrapper: false
+          terraform_wrapper: true
       - name: terraform init
         id: tf-init
         run: terraform init
