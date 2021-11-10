@@ -126,7 +126,7 @@ jobs:
       - name: apply terragrunt 
         run: |
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
-          terragrunt apply
+          terragrunt apply --terragrunt-non-interactive
   TerraformPlan:
     #needs: [Lint, Format, Security, TerraformInitValidate]
     needs: [TerragruntVpcApply]
