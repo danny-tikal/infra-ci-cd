@@ -91,37 +91,37 @@ jobs:
           repository: explorium-ai/terraform
           token: ${{ secrets.PAT_TOKEN }}
           clean: false
-      - name: check folders
-        run: |
-          ls -l 
-          echo .
-      - name: setup terraform
-        run: |
-          wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
-          unzip terraform_1.0.4_linux_amd64.zip
-          mv terraform /usr/local/bin/
-          echo >> ~/.terraformrc
-          echo 'credentials "github.com" {'               >> ~/.terraformrc
-          echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
-          echo '}'                                        >> ~/.terraformrc
-          echo .
-          echo .
-          ls -l ~/.terraform*
-          cat ~/.terraformrc
-          mkdir -p test
-          cd test
-          export ggg=${{ secrets.PAT_TOKEN }}
-          [ "${ggg:17:8}" == "${PAT:17:8}" ] && echo "O.K" || echo "ooops ${PAT:17:8} ..."
-          echo .
-          echo .
-          echo Start cloning .....
-          git clone https://danny-tikal@github.com/explorium-ai/terraform.git
-      #- name: Setup Terraform
-      #  uses: hashicorp/setup-terraform@v1
-      #  with:
-      #    terraform_version: 1.0.4
-      #    cli_config_credentials_token: ${{ secrets.github_token }}
-      #    terraform_wrapper: true
+     # - name: check folders
+     #   run: |
+     #     ls -l 
+     #     echo .
+     # - name: setup terraform
+     #   run: |
+     #     wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
+     #     unzip terraform_1.0.4_linux_amd64.zip
+     #     mv terraform /usr/local/bin/
+     #     echo >> ~/.terraformrc
+     #     echo 'credentials "github.com" {'               >> ~/.terraformrc
+     #     echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
+     #     echo '}'                                        >> ~/.terraformrc
+     #     echo .
+     #     echo .
+     #     ls -l ~/.terraform*
+     #     cat ~/.terraformrc
+     #     mkdir -p test
+     #     cd test
+     #     export ggg=${{ secrets.PAT_TOKEN }}
+     #     [ "${ggg:17:8}" == "${PAT:17:8}" ] && echo "O.K" || echo "ooops ${PAT:17:8} ..."
+     #     echo .
+     #     echo .
+     #     echo Start cloning .....
+     #     git clone https://danny-tikal@github.com/explorium-ai/terraform.git
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.4
+          cli_config_credentials_token: ${{ secrets.PAT_TOKEN }}
+          terraform_wrapper: true
       - name: terraform init
         id: tf-init
         run: terraform init
