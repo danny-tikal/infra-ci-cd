@@ -100,21 +100,25 @@ jobs:
           wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
           unzip terraform_1.0.4_linux_amd64.zip
           mv terraform /usr/local/bin/
-          echo >> ~/.terraformrc
-          echo 'credentials "github.com" {'               >> ~/.terraformrc
-          echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
-          echo '}'                                        >> ~/.terraformrc
-          echo .
-          echo .
-          ls -l ~/.terraform*
-          cat ~/.terraformrc
+          #echo >> ~/.terraformrc
+          #echo 'credentials "github.com" {'               >> ~/.terraformrc
+          #echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
+          #echo '}'                                        >> ~/.terraformrc
+          #echo .
+          #echo .
+          #ls -l ~/.terraform*
+          #cat ~/.terraformrc
           mkdir -p test
           cd test
           export ggg=${{ secrets.PAT_TOKEN }}
           [ "${ggg:17:8}" == "${PAT:17:8}" ] && echo "O.K" || echo "ooops ${PAT:17:8} ..."
           echo .
-          echo .
+          echo "git config content"
+          [ -e ~/.gitconfig ] && cat ~/.gitconfig || echo "No git config"
           echo Start cloning .....
+          git config --global url."https://oauth2:${{ secrets.PAT_TOKEN }}@github.com".insteadOf https://github.com
+          echo "Git configuration "
+          cat ~/.gitconfig
      #     git clone https://danny-tikal@github.com/explorium-ai/terraform.git
      # - name: Setup Terraform
      #   uses: hashicorp/setup-terraform@v1
