@@ -85,12 +85,12 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: clone repository
-        uses: actions/checkout@v2
-        with:
-          repository: explorium-ai/terraform.git
-          token: ${{ secrets.PAT_TOKEN }}
-          clean: false
+      #- name: clone repository
+      #  uses: actions/checkout@v2
+      #  with:
+      #    repository: explorium-ai/terraform.git
+      #    token: ${{ secrets.PAT_TOKEN }}
+      #    clean: false
       - name: check folders
         run: |
           ls -l 
@@ -106,6 +106,9 @@ jobs:
           echo '}'                                        >> ~/.terraformrc
           ls -l ~/.terraform*
           cat ~/.terraformrc
+          mkdir -p test
+          cd test
+          git clone https://danny-tikal@github.com/explorium-ai/terraform.git
       #- name: Setup Terraform
       #  uses: hashicorp/setup-terraform@v1
       #  with:
