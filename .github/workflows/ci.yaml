@@ -90,6 +90,11 @@ jobs:
         with:
           repository: explorium-ai/terraform.git
           token: ${{ secrets.PAT_TOKEN }}
+          clean: false
+      - name: check folders
+        run: |
+          ls -l 
+          echo .
       - name: setup terraform
         run: |
           wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
