@@ -104,10 +104,17 @@ jobs:
           echo 'credentials "github.com" {'               >> ~/.terraformrc
           echo '  token = "${{ secrets.PAT_TOKEN }}"'  >> ~/.terraformrc
           echo '}'                                        >> ~/.terraformrc
+          echo .
+          echo .
           ls -l ~/.terraform*
           cat ~/.terraformrc
           mkdir -p test
           cd test
+          export ggg=${{ secrets.PAT_TOKEN }}
+          [ "${ggg:17:8}" == "${PAT:17:8}" ] && echo "O.K" || echo "ooops ${PAT:17:8} ..."
+          echo .
+          echo .
+          echo Start cloning .....
           git clone https://danny-tikal@github.com/explorium-ai/terraform.git
       #- name: Setup Terraform
       #  uses: hashicorp/setup-terraform@v1
