@@ -85,12 +85,12 @@ jobs:
       run:
         shell: bash
     steps:
-      #- name: clone repository
-      #  uses: actions/checkout@v2
-      #  with:
-      #    repository: explorium-ai/terraform.git
-      #    token: ${{ secrets.PAT_TOKEN }}
-      #    clean: false
+      - name: clone repository
+        uses: actions/checkout@v2
+        with:
+          repository: explorium-ai/terraform
+          token: ${{ secrets.PAT_TOKEN }}
+          clean: false
       - name: check folders
         run: |
           ls -l 
