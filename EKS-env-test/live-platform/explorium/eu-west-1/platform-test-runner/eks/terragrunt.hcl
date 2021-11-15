@@ -58,4 +58,31 @@ inputs = {
   cluster_version             = 1.21
   subnets                     = dependency.vpc.outputs.private_subnets
 
+  worker_groups_launch_template = [
+    {
+    name                    = "spots"
+    override_instance_types = var.spot_instance_types
+    spot_instance_pools     = 8
+    asg_max_size            = ${local.spot-max_size}
+    asg_min_size            = ${local.spot-min_size}
+    asg_desired_capacity    = ${var.spot-min_size} # looks like doesn't affect after initial creation
+    additional_security_group_ids = [aws_security_group.eks_asg.id]
+    kubelet_extra_args      = "--node-labels=node=spot,node.kubernetes.io/lifecycle=spot"
+    }
+  ]
+
+
+  worker_groups = [
+    {
+      name                          = "on-demand"
+      instance_type                 = var.ondemand_instance_types
+      additional_userdata           = ""
+      asg_desired_capacity          = ${local.demand-min_size}
+      asg_min_size                  = ${local.demand-min_size}
+      asg_max_size                  = ${local.demand-max_size}
+      additional_security_group_ids = [aws_security_group.eks_asg.id]
+      kubelet_extra_args      = "--node-labels=node=ondemand"
+    }
+  ]
+
 }
