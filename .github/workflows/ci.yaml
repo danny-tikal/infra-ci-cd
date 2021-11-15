@@ -131,7 +131,7 @@ jobs:
           terragrunt plan
   TerragruntVpcApply:
     runs-on: [self-hosted, aws-runner]
-    needs: [TerragruntVpcInit ]
+    needs: [TerraformInitValidate,TerragruntVpcInit ]
     defaults:
       run:
         shell: bash
@@ -149,7 +149,7 @@ jobs:
         run: |
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
           terragrunt apply --terragrunt-non-interactive -auto-approve
-  TerraformPlan:
+  TerragruntEKSApply:
     #needs: [Lint, Format, Security, TerraformInitValidate]
     needs: [TerragruntVpcApply]
     runs-on: [self-hosted, aws-runner]
@@ -164,4 +164,4 @@ jobs:
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/eks
           terragrunt init  --terragrunt-ignore-dependency-errors --terragrunt-non-interactive
           terragrunt plan  --terragrunt-ignore-dependency-errors --terragrunt-non-interactive 
-          terragrunt apply --terragrunt-ignore-dependency-errors --terragrunt-non-interactive -auto-approve
+          terragrunt destroy --terragrunt-ignore-dependency-errors --terragrunt-non-interactive -auto-approve
