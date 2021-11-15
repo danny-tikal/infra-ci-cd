@@ -164,4 +164,4 @@ jobs:
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/eks
           terragrunt init  --terragrunt-ignore-dependency-errors --terragrunt-non-interactive
           terragrunt plan  --terragrunt-ignore-dependency-errors --terragrunt-non-interactive 
-          terragrunt destroy --terragrunt-ignore-dependency-errors --terragrunt-non-interactive -auto-approve
+          terragrunt apply --terragrunt-ignore-dependency-errors --terragrunt-non-interactive -auto-approve
