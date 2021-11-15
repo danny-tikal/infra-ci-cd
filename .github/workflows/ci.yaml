@@ -126,8 +126,6 @@ jobs:
           echo "Finished install"
       - name: init terragrunt 
         run: |
-          rm -f *.tf
-          cat ~/.terraformrc
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
           terragrunt init
           terragrunt plan
