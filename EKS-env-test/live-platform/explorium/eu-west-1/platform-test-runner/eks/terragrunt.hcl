@@ -9,7 +9,7 @@ locals {
   filebeat_creds = yamldecode("${get_terragrunt_dir()}/creds/filebeat_creds.yml.encrypted")
   env = local.environment_vars.locals.environment
   account_arn = local.account_vars.locals.account_arn
-  sg_id                       = "sg-0f4edea3de1d5fcdc"
+  sg_id                       = "sg-0072d0aecb1f9774c"
   inst_types = ["m5a.4xlarge", "m5ad.4xlarge" , "m5.4xlarge", "m5d.4xlarge", "m5n.4xlarge", "m5dn.4xlarge", "m4.4xlarge"]
 }
 
