@@ -57,6 +57,7 @@ inputs = {
   cluster_name                = "eks-${local.env}"
   cluster_version             = 1.21
   subnets                     = dependency.vpc.outputs.private_subnets
+  sg_id                       = dependency.vpc.outputs.default_vpc_default_security_group_id
 
   worker_groups_launch_template = [
     {
@@ -66,7 +67,7 @@ inputs = {
     asg_max_size            = 2
     asg_min_size            = 1
     asg_desired_capacity    = 1 # looks like doesn't affect after initial creation
-    additional_security_group_ids = [aws_security_group.eks_asg.id]
+    additional_security_group_ids = ["${local.sg_id}"]  ##aws_security_group.eks_asg.id]
     kubelet_extra_args      = "--node-labels=node=spot,node.kubernetes.io/lifecycle=spot"
     }
   ]
@@ -80,7 +81,7 @@ inputs = {
       asg_desired_capacity          = 1
       asg_min_size                  = 1
       asg_max_size                  = 2
-      additional_security_group_ids = [aws_security_group.eks_asg.id]
+      additional_security_group_ids = ["${local.sg_id}"]     #[aws_security_group.eks_asg.id]
       kubelet_extra_args      = "--node-labels=node=ondemand"
     }
   ]
