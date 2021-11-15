@@ -9,7 +9,7 @@ locals {
   filebeat_creds = yamldecode("${get_terragrunt_dir()}/creds/filebeat_creds.yml.encrypted")
   env = local.environment_vars.locals.environment
   account_arn = local.account_vars.locals.account_arn
-
+  sg_id                       = "sg-0f4edea3de1d5fcdc"
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
@@ -57,7 +57,7 @@ inputs = {
   cluster_name                = "eks-${local.env}"
   cluster_version             = 1.21
   subnets                     = dependency.vpc.outputs.private_subnets
-  sg_id                       = "sg-0f4edea3de1d5fcdc"    #dependency.vpc.outputs.default_vpc_default_security_group_id
+  #sg_id                       = "sg-0f4edea3de1d5fcdc"    #dependency.vpc.outputs.default_vpc_default_security_group_id
 
   worker_groups_launch_template = [
     {
