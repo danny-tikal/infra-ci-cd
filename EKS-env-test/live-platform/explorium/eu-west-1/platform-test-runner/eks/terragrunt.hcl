@@ -77,7 +77,7 @@ inputs = {
   worker_groups = [
     {
       name                          = "on-demand"
-      instance_type                 = local.inst_types
+      instance_type                 = "m4.4xlarge"
       additional_userdata           = ""
       asg_desired_capacity          = 1
       asg_min_size                  = 1
