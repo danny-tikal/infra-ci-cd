@@ -10,6 +10,7 @@ locals {
   env = local.environment_vars.locals.environment
   account_arn = local.account_vars.locals.account_arn
   sg_id                       = "sg-0f4edea3de1d5fcdc"
+  inst_types = ["m5a.4xlarge", "m5ad.4xlarge" , "m5.4xlarge", "m5d.4xlarge", "m5n.4xlarge", "m5dn.4xlarge", "m4.4xlarge"]
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
@@ -76,7 +77,7 @@ inputs = {
   worker_groups = [
     {
       name                          = "on-demand"
-      instance_type                 = var.ondemand_instance_types
+      instance_type                 = ${local.inst_types}
       additional_userdata           = ""
       asg_desired_capacity          = 1
       asg_min_size                  = 1
