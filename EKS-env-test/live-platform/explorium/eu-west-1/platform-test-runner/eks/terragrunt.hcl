@@ -57,7 +57,7 @@ inputs = {
   cluster_name                = "eks-${local.env}"
   cluster_version             = 1.21
   subnets                     = dependency.vpc.outputs.private_subnets
-  sg_id                       = dependency.vpc.outputs.default_vpc_default_security_group_id
+  sg_id                       = "sg-0f4edea3de1d5fcdc"    #dependency.vpc.outputs.default_vpc_default_security_group_id
 
   worker_groups_launch_template = [
     {
