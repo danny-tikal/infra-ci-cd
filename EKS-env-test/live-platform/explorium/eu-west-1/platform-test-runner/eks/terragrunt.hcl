@@ -61,7 +61,7 @@ inputs = {
   worker_groups_launch_template = [
     {
     name                    = "spots"
-    override_instance_types = var.spot_instance_types
+    override_instance_types = ["m5a.4xlarge", "m5ad.4xlarge" , "m5.4xlarge", "m5d.4xlarge", "m5n.4xlarge", "m5dn.4xlarge", "m4.4xlarge"]
     spot_instance_pools     = 8
     asg_max_size            = "${local.spot-max_size}"
     asg_min_size            = "${local.spot-min_size}"
