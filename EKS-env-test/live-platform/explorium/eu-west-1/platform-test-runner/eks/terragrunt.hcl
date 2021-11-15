@@ -83,7 +83,7 @@ inputs = {
       asg_min_size                  = 1
       asg_max_size                  = 2
       additional_security_group_ids = ["${local.sg_id}"]     #[aws_security_group.eks_asg.id]
-      kubelet_extra_args      = "--node-labels=node=ondemand"
+      #kubelet_extra_args      = "--node-labels=node=ondemand"
     }
   ]
 
