@@ -2,9 +2,12 @@
 # feed forward to the child modules.
 locals {
   environment = "platform-test-runner"
-  vpc_cidr    = "10.162.0.0/16"
-  private_subnets = ["10.165.32.0/19", "10.165.64.0/19", "10.165.96.0/19"]
-  public_subnets = ["10.165.128.0/19", "10.165.160.0/19", "10.162.192.0/19"]
+  vpc_cidr    = "10.165.0.0/16"
+  private_subnets  = [cidrsubnet(local.vpc_cidr, 3, 1), cidrsubnet(local.vpc_cidr, 3, 2), cidrsubnet(local.vpc_cidr, 3, 3)]
+  public_subnets   = [cidrsubnet(local.vpc_cidr, 3, 4), cidrsubnet(local.vpc_cidr, 3, 5), cidrsubnet(local.vpc_cidr, 3, 6)]
+
+
+
   CS_STAGE                        = "develop"
   EM_STAGE                        = "develop"
   MACHINE_TYPE                    = "dev"
