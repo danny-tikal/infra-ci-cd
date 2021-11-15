@@ -9,12 +9,15 @@ locals {
   filebeat_creds = yamldecode("${get_terragrunt_dir()}/creds/filebeat_creds.yml.encrypted")
   env = local.environment_vars.locals.environment
   account_arn = local.account_vars.locals.account_arn
+
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
-  source = "github.com/explorium-ai/terraform.git//eks-template/eks"
+  #source = "github.com/explorium-ai/terraform.git//eks-template/eks"
+  #source = "git@github.com:explorium-ai/terraform.git//modules/resources/eks"
+  source = "github.com/explorium-ai/terraform.git//modules/resources/eks"
 }
 
 # Include all settings from the root terragrunt.hcl file
@@ -49,4 +52,10 @@ inputs = {
   spot-min_size               = 1
   demand-max_size             = 2
   demand-min_size             = 1
+
+  ### additional inputs for EKS module
+  cluster_name                = "eks-${local.env}"
+  cluster_version             = 1.21
+  subnets                     = dependency.vpc.outputs.private_subnets
+
 }
