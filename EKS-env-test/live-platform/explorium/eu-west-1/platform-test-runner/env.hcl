@@ -3,8 +3,8 @@
 locals {
   environment = "platform-test-runner"
   vpc_cidr    = "10.162.0.0/16"
-  private_subnets = ["10.162.32.0/19", "10.162.64.0/19", "10.162.96.0/19"]
-  public_subnets = ["10.162.128.0/19", "10.162.160.0/19", "10.162.192.0/19"]
+  private_subnets = ["10.165.32.0/19", "10.165.64.0/19", "10.165.96.0/19"]
+  public_subnets = ["10.165.128.0/19", "10.165.160.0/19", "10.162.192.0/19"]
   CS_STAGE                        = "develop"
   EM_STAGE                        = "develop"
   MACHINE_TYPE                    = "dev"
