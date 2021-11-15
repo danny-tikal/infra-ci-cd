@@ -77,9 +77,9 @@ inputs = {
       name                          = "on-demand"
       instance_type                 = var.ondemand_instance_types
       additional_userdata           = ""
-      asg_desired_capacity          = ${local.demand-min_size}
-      asg_min_size                  = ${local.demand-min_size}
-      asg_max_size                  = ${local.demand-max_size}
+      asg_desired_capacity          = "${local.demand-min_size}"
+      asg_min_size                  = "${local.demand-min_size}"
+      asg_max_size                  = "${local.demand-max_size}"
       additional_security_group_ids = [aws_security_group.eks_asg.id]
       kubelet_extra_args      = "--node-labels=node=ondemand"
     }
