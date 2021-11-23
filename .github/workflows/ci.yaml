@@ -136,7 +136,7 @@ jobs:
           echo apt-get update
           echo apt-get install -y kubectl
           echo "kubectl finished"
-          kubectl version --short
+          kubectl version --short --client
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           echo "unzip awscliv2.zip"
           unzip awscliv2.zip > /dev/null
