@@ -133,6 +133,7 @@ jobs:
           echo chmod +x kubectl
           echo mkdir -p ~/.local/bin/kubectl
           echo mv ./kubectl ~/.local/bin/kubectl
+          apt-get update
           apt-get install -y kubectl
           echo "kubectl finished"
           kubectl version --short
