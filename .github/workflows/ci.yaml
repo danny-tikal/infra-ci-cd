@@ -131,7 +131,8 @@ jobs:
           echo "unzip awscliv2.zip"
           unzip awscliv2.zip > /dev/null
           echo "finished zipping ...."
-          sudo ./aws/install
+          whoami
+          ./aws/install
           aws sts  get-caller-identity
           aws eks list-clusters
           aws eks update-kubeconfig  -name eks-platform-test-runner
