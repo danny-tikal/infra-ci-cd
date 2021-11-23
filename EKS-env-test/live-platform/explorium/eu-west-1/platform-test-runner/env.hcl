@@ -12,4 +12,17 @@ locals {
   EM_STAGE                        = "develop"
   MACHINE_TYPE                    = "dev"
   eds_rds_url = "eds-starters-test1.cluster-corbl4iztisv.eu-west-1.rds.amazonaws.com"
+  
+  admin_accounts = [
+    "boris.avney" ,
+    "oren.levi" ,
+    "bohdan" ,
+    "matthew.buhagiar" ,
+    "amitai.getzler" ,
+    "jenkins" ,
+    "dannyk" ,
+    "hagzag"
+  ]
+  admin_roles = [ "eks-platform-test-runner-role" ]
+  dev_roles = []
 }

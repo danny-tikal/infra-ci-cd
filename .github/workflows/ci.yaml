@@ -127,6 +127,9 @@ jobs:
       - name: init terragrunt 
         run: |
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
+          aws sts  get-caller-identity
+          aws eks list-clusters
+          aws eks update-kubeconfig  -name eks-platform-test-runner
           terragrunt init
           terragrunt plan
   TerragruntVpcApply:
@@ -148,7 +151,7 @@ jobs:
       - name: apply terragrunt 
         run: |
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
-          terragrunt apply --terragrunt-non-interactive -auto-approve
+          echo terragrunt apply --terragrunt-non-interactive -auto-approve
   TerragruntEKSApply:
     #needs: [Lint, Format, Security, TerraformInitValidate]
     needs: [TerragruntVpcApply]
