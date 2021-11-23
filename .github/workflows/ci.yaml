@@ -128,7 +128,12 @@ jobs:
         run: |
           cd EKS-env-test/live-platform/explorium/eu-west-1/platform-test-runner/vpc
           echo "install kubectl ..."
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          cecho url -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          echo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+          echo chmod +x kubectl
+          echo mkdir -p ~/.local/bin/kubectl
+          echo mv ./kubectl ~/.local/bin/kubectl
+          apt-get install -y kubectl
           echo "kubectl finished"
           kubectl version --short
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
