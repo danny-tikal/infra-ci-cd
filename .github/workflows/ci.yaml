@@ -147,7 +147,8 @@ jobs:
           aws sts  get-caller-identity
           aws eks list-clusters
           aws eks update-kubeconfig  --name eks-platform-test-runner
-
+          echo "kubectl get nodes"
+          kubectl get nodes
           terragrunt init
           terragrunt plan
   TerragruntVpcApply:
